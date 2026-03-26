@@ -1,0 +1,1 @@
+UPDATE public.platform_fees SET pix_fee_percent = 0, withdrawal_fee_percent = 0;

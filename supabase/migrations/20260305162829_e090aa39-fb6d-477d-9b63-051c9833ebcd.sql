@@ -1,0 +1,1 @@
+UPDATE public.platform_fees SET withdrawal_fee_fixed = 1.00, pix_fee_fixed = 1.00;
