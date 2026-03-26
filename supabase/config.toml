@@ -1,0 +1,37 @@
+project_id = "ofogehcsvsjszytovfga"
+
+[functions.misticpay-webhook]
+verify_jwt = false
+
+[functions.resolve-game]
+verify_jwt = false
+
+[functions.process-withdrawal]
+verify_jwt = false
+
+[functions.gateway-api]
+verify_jwt = false
+
+[functions.admin-api]
+verify_jwt = false
+
+[functions.gateway-metrics]
+verify_jwt = false
+
+[functions.gateway-webhook]
+verify_jwt = false
+
+[functions.gateway-deliver-webhooks]
+verify_jwt = false
+
+[functions.reconciliation]
+verify_jwt = false
+
+[functions.reconciliation-report]
+verify_jwt = false
+
+[functions.health-check]
+verify_jwt = false
+
+[functions.gateway-test-runner]
+verify_jwt = false
