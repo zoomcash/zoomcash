@@ -1,1 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 18% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 18% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 155 72% 46%;
+    --primary-foreground: 220 20% 4%;
+
+    --secondary: 220 16% 10%;
+    --secondary-foreground: 0 0% 70%;
+
+    --muted: 220 14% 12%;
+    --muted-foreground: 220 8% 46%;
+
+    --accent: 155 72% 46%;
+    --accent-foreground: 220 20% 4%;
+
+    --destructive: 0 68% 52%;
+    --destructive-foreground: 0 0% 98%;
+
+    --success: 152 69% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --border: 220 14% 11%;
+    --input: 220 14% 11%;
+    --ring: 155 72% 46%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 220 20% 5%;
+    --sidebar-foreground: 0 0% 65%;
+    --sidebar-primary: 155 72% 46%;
+    --sidebar-primary-foreground: 220 20% 4%;
+    --sidebar-accent: 220 16% 9%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 220 14% 9%;
+    --sidebar-ring: 155 72% 46%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400;
+    letter-spacing: -0.011em;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.025em;
+  }
+
+  h1 {
+    font-weight: 800;
+  }
+
+  h2, h3 {
+    font-weight: 700;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted));
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
+  }
+}
+
+@layer utilities {
+  .text-success {
+    color: hsl(var(--success));
+  }
+
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+
+  /* Glass morphism */
+  .glass {
+    background: hsl(var(--card) / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .glass-card {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--card) / 0.8) 0%,
+      hsl(220 18% 9% / 0.6) 100%
+    );
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border) / 0.6);
+  }
+
+  /* Subtle glow effects */
+  .glow-sm {
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.15),
+                0 0 3px hsl(var(--primary) / 0.1);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.2),
+                0 0 6px hsl(var(--primary) / 0.15);
+  }
+
+  .border-glow {
+    border-color: hsl(var(--primary) / 0.2);
+  }
+
+  /* Card interactions */
+  .card-hover {
+    transition: all 0.2s ease;
+  }
+
+  .card-hover:hover {
+    border-color: hsl(var(--primary) / 0.25);
+    box-shadow: 0 4px 24px hsl(0 0% 0% / 0.3),
+                0 0 0 1px hsl(var(--primary) / 0.06);
+    transform: translateY(-1px);
+  }
+
+  /* Gradient backgrounds */
+  .gradient-subtle {
+    background: linear-gradient(
+      145deg,
+      hsl(var(--card)) 0%,
+      hsl(220 16% 8%) 100%
+    );
+  }
+
+  .gradient-primary {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(160 65% 38%) 100%
+    );
+  }
+
+  /* Stat card accent line */
+  .accent-line {
+    position: relative;
+  }
+
+  .accent-line::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.4) 50%,
+      transparent 100%
+    );
+  }
+
+  /* Mono font for values */
+  .font-mono-value {
+    font-family: 'Space Mono', 'SF Mono', monospace;
+    font-feature-settings: 'tnum';
+    letter-spacing: -0.02em;
+  }
+
+  /* Pulse dot */
+  .pulse-dot {
+    position: relative;
+  }
+
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: hsl(var(--primary));
+    animation: pulse-glow 2s infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 4px hsl(var(--primary) / 0); }
+  }
+
+  /* Subtle page gradient */
+  .page-gradient {
+    background: 
+      radial-gradient(ellipse 60% 40% at 50% 0%, hsl(var(--primary) / 0.03) 0%, transparent 60%),
+      hsl(var(--background));
+  }
+}
